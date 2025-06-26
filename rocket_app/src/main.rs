@@ -24,8 +24,8 @@ async fn rocket() -> _ {
         .manage(pool)
         .mount("/api", routes![  //   /api/users
             get_users, get_user, create_user, update_user, delete_user,
-            // get_tasks, get_task, create_task, update_task, delete_task,
-            // get_task_statuses, get_task_status, create_task_status, update_task_status, delete_task_status,
-            // get_user_tasks, get_user_task, create_user_task, update_user_task, delete_user_task
+            get_tasks, get_task, create_task, update_task, delete_task,
+            get_task_statuses, get_task_status, create_task_status, update_task_status, delete_task_status,
+            get_user_tasks, get_user_task, create_user_task, update_user_task, delete_user_task
         ])
 }
