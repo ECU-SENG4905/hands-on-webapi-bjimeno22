@@ -1,0 +1,12 @@
+[default]
+address = "127.0.0.1"
+port = 8081
+log_level = "normal"
+workers = 2    # threads
+keep_alive = 5    # seconds
+limits = { form = 32768, json = 1048576 }  # bytes
+
+[release]
+address = "0.0.0.0"
+port = 80
+log_level = "critical"
