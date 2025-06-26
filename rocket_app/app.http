@@ -36,3 +36,100 @@ Content-Type: application/json
 DELETE {{web_api_host}}/api/users/11  HTTP/2
 
 ###
+// Tasks Endpoints
+
+GET {{web_api_host}}/api/tasks  HTTP/2
+
+###
+
+GET {{web_api_host}}/api/tasks/5 HTTP/2
+
+###
+
+PUT {{web_api_host}}/api/tasks/5  HTTP/2
+Content-Type: application/json
+
+{
+  "task_name": "Eat"
+}
+
+###
+
+POST {{web_api_host}}/api/tasks  HTTP/2
+Content-Type: application/json
+
+{
+  "task_name": "sleep"
+}
+
+###
+
+DELETE {{web_api_host}}/api/tasks/5  HTTP/2
+
+###
+
+// statuses
+
+GET {{web_api_host}}/api/tasks_statuses  HTTP/2
+
+###
+
+GET {{web_api_host}}/api/tasks_statuses/2 HTTP/2
+
+###
+
+PUT {{web_api_host}}/api/tasks_statuses/2  HTTP/2
+Content-Type: application/json
+
+{
+  "status_name": "Current"
+}
+
+###
+
+POST {{web_api_host}}/api/tasks_statuses  HTTP/2
+Content-Type: application/json
+
+{
+  "task_name": "Pending Approval"
+}
+
+###
+
+DELETE {{web_api_host}}/api/tasks_statuses/4  HTTP/2
+
+###
+// Assignments Endpoints
+GET {{web_api_host}}/api/assignments  HTTP/2
+
+###
+
+GET {{web_api_host}}/api/assignments/1/7 HTTP/2
+
+###
+
+PUT {{web_api_host}}/api/assignments/1/7  HTTP/2
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "task_id": 7,
+  "task_status_id": 3
+}
+
+###
+
+POST {{web_api_host}}/api/assignments  HTTP/2
+Content-Type: application/json
+
+{
+  "user_id": 4,
+  "task_id": 8,
+  "task_status_id": 2
+}
+
+###
+
+DELETE {{web_api_host}}/api/assignments/4/8  HTTP/2
+
+###

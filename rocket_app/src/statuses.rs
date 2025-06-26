@@ -18,38 +18,32 @@ pub async fn get_task_statuses(pool: &State<DbPool>) -> Json<Vec<TaskStatus>> {
     Json(task_statuses)
 }
 
-#[get("/task_status/<id>")]
+#[get("/tasks_statuses/<id>")]
 pub async fn get_task_status(id: i32, pool: &State<DbPool>) -> Option<Json<TaskStatus>> {
     let mut conn = pool.get().ok()?;
     TaskStatus::read(&mut conn, id).ok().flatten().map(Json)
 }
 
-#[put("/task_status/<id>", data = "<task_status>")]
+#[put("/tasks_statuses/<id>", data = "<task_status>")]
 pub async fn update_task_status(id: i32, pool: &State<DbPool>, task_status: Json<TaskStatusInput> ) -> Option<Json<TaskStatus>> {
     let mut conn = pool.get().ok()?;
     let updated_task_status = NewTaskStatus {
         status_name: &task_status.status_name,
     };
-    TaskStatus::update(&mut conn, id, updated_task_status)
-        .ok()
-        .map(Json)
+    TaskStatus::update(&mut conn, id, updated_task_status).ok().map(Json)
 }
 
-#[post("/task_status", data = "<task_status>")]
+#[post("/tasks_statuses", data = "<task_status>")]
 pub async fn create_task_status( pool: &State<DbPool>, task_status: Json<TaskStatusInput>) -> Option<Json<TaskStatus>> {
     let mut conn = pool.get().ok()?;
     let new_task_status = NewTaskStatus {
         status_name: &task_status.status_name,
     };
-    TaskStatus::create(&mut conn, new_task_status)
-        .ok()
-        .map(Json)
+    TaskStatus::create(&mut conn, new_task_status).ok().map(Json)
 }
 
-#[delete("/task_status/<id>")]
+#[delete("/tasks_statuses/<id>")]
 pub async fn delete_task_status(id: i32, pool: &State<DbPool>) -> Option<Json<usize>> {
     let mut conn = pool.get().ok()?;
-    TaskStatus::delete(&mut conn, id)
-        .ok()
-        .map(Json)
+    TaskStatus::delete(&mut conn, id).ok().map(Json)
 }
